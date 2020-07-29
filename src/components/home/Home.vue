@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h4>11111</h4>
+    <el-button>默认按钮</el-button>
   </div>
 </template>
 
@@ -13,7 +13,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .header {
   text-align: center;
