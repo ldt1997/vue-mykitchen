@@ -38,7 +38,12 @@ a {
   text-decoration: none;
   color: unset;
 }
-body {
+body,
+ul,
+li,
+h1 {
   margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 </style>
