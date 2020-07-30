@@ -4,6 +4,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import Home from "@/components/home/Home"
 import Calendar from "@/components/calendar/Calendar"
+import Goods from "@/components/goods/Goods"
 import App from './App.vue'
 
 Vue.use(VueRouter);
@@ -16,6 +17,10 @@ const routes = [{
   {
     path: '/calendar',
     component: Calendar
+  },
+  {
+    path: '/goods',
+    component: Goods
   }
 ]
 

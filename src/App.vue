@@ -2,7 +2,7 @@
   <div id="app">
     <Header :title="title" />
     <!-- 路由匹配到的组件将渲染在这里 -->
-    <router-view></router-view>
+    <div class="router-container"><router-view></router-view></div>
   </div>
 </template>
 
@@ -27,5 +27,18 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.router-container {
+  flex: 1;
+}
+a {
+  text-decoration: none;
+  color: unset;
+}
+body {
+  margin: 0;
 }
 </style>

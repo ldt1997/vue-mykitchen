@@ -1,6 +1,8 @@
 <template>
   <div class="header">
-    <h4>{{ title }}</h4>
+    <h4>
+      <router-link to="/">{{ title }}</router-link>
+    </h4>
   </div>
 </template>
 

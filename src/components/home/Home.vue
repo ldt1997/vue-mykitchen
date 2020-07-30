@@ -7,7 +7,7 @@
           <p>
             源于中国千年古法，融和现代制作工艺
           </p>
-          <p>坚守纯天然、0添加的良心品质深得消费者青睐</p>
+          <p>坚守0添加的良心品质深得消费者青睐</p>
         </div>
         <div class="right">
           <img
@@ -20,12 +20,14 @@
     <section class="menu">
       <el-row>
         <el-col :span="8" v-for="(item, index) in menu" :key="index">
-          <div class="item">
-            <i :class="item.icon"></i>
-            <p class="title">
-              <router-link :to="item.path">{{ item.title }}</router-link>
-            </p>
-          </div></el-col
+          <router-link :to="item.path"
+            ><div class="item">
+              <i :class="item.icon"></i>
+              <p class="title">
+                {{ item.title }}
+              </p>
+            </div></router-link
+          ></el-col
         >
       </el-row>
     </section>
@@ -107,7 +109,7 @@ export default {
   }
 }
 .item {
-  height: calc((100vw - 16px) / 3);
+  height: calc(100vw / 3);
   display: flex;
   flex-direction: column;
   align-items: center;

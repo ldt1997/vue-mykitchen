@@ -41,6 +41,7 @@ export default {
   width: 100%;
   .actions {
     text-align: center;
+    padding: 0 8px;
     button {
       width: 100%;
       margin: 0 0 10px 0;
