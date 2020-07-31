@@ -10,12 +10,19 @@
 
 <script>
 import Header from "@/components/header/Header";
+import axios from "axios";
 export default {
   name: "App",
-  data: function () {
+  data() {
     return {
       title: "My kitchen :)",
+      seller: {},
     };
+  },
+  created() {
+    axios.get("/api/getSeller").then((res) => {
+      this.seller = res.data;
+    });
   },
   components: {
     Header,

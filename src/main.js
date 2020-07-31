@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import '../static/css/reset.css';
+import "../mock/index";
 import Home from "@/components/home/Home"
 import Calendar from "@/components/calendar/Calendar"
 import Goods from "@/components/goods/Goods"

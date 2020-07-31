@@ -8,7 +8,9 @@
             :key="index"
             :class="activeIndex === index ? 'menuItemActive' : 'menuItem'"
             @click="onMenuClick(index)"
-          >{{ item.name }}</div>
+          >
+            {{ item.name }}
+          </div>
         </el-aside>
         <el-main class="foodWrapper">
           <ul>
@@ -42,19 +44,24 @@
 </template>
 
 <script>
-// FIXME: 后续改为获取mock接口数据
-import mock from "../../../data.json";
+import axios from "axios";
+
 export default {
   name: "Calendar",
   methods: {
-    onMenuClick: function (index) {
+    onMenuClick: function(index) {
       this.activeIndex = index;
     },
   },
-  data: function () {
+  created() {
+    axios.get("/api/getGoods").then((res) => {
+      this.goods = res.data;
+    });
+  },
+  data() {
     return {
       activeIndex: 0,
-      goods: mock.goods,
+      goods: [],
     };
   },
 };
