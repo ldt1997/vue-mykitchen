@@ -28,8 +28,17 @@
                       <p class="price">¥{{ food.price }}</p>
                     </div>
                     <div class="right">
-                      <!-- <i class="el-icon-remove"></i> -->
-                      <i class="el-icon-circle-plus"></i>
+                      <i
+                        class="el-icon-remove-outline"
+                        v-show="
+                          cartMap[food.name] && cartMap[food.name].count > 0
+                        "
+                        @click="handleRemoveCart(food)"
+                      ></i>
+                      <i
+                        class="el-icon-circle-plus"
+                        @click="handleAddCart(food)"
+                      ></i>
                     </div>
                   </div>
                 </li>
@@ -48,9 +57,30 @@ import axios from "axios";
 
 export default {
   name: "Calendar",
+  computed: {
+    cartMap() {
+      return this.$store.state.cartMap;
+    },
+  },
   methods: {
     onMenuClick: function(index) {
       this.activeIndex = index;
+    },
+    handleAddCart(item) {
+      const _map = { ...this.$store.state.cartMap };
+      if (!_map[item.name]) _map[item.name] = { ...item, count: 0 };
+      _map[item.name].count++;
+      this.$store.commit("setCart", {
+        cartMap: _map,
+      });
+    },
+    handleRemoveCart(item) {
+      const _map = { ...this.$store.state.cartMap };
+      _map[item.name].count--;
+      if (_map[item.name].count < 0) _map[item.name].count = 0;
+      this.$store.commit("setCart", {
+        cartMap: _map,
+      });
     },
   },
   created() {
