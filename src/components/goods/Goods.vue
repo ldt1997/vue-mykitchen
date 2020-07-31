@@ -2,16 +2,14 @@
   <div class="container">
     <el-container>
       <el-container>
-        <el-aside width="100px"
-          ><div
+        <el-aside width="100px">
+          <div
             v-for="(item, index) in goods"
             :key="index"
             :class="activeIndex === index ? 'menuItemActive' : 'menuItem'"
             @click="onMenuClick(index)"
-          >
-            {{ item.name }}
-          </div></el-aside
-        >
+          >{{ item.name }}</div>
+        </el-aside>
         <el-main class="foodWrapper">
           <ul>
             <li v-for="good in goods" :key="good.name" class="foodList">
@@ -19,13 +17,16 @@
               <ul>
                 <li v-for="(food, index) in good.foods" :key="index">
                   <div class="foodItem">
-                    <div class="left"><img :src="food.image" /></div>
+                    <div class="left">
+                      <img :src="food.image" />
+                    </div>
                     <div class="middle">
                       <h2>{{ food.name }}</h2>
                       <p>{{ food.description }}</p>
                       <p class="price">¥{{ food.price }}</p>
                     </div>
-                    <div class="right" @click="add">
+                    <div class="right">
+                      <!-- <i class="el-icon-remove"></i> -->
                       <i class="el-icon-circle-plus"></i>
                     </div>
                   </div>
@@ -46,11 +47,11 @@ import mock from "../../../data.json";
 export default {
   name: "Calendar",
   methods: {
-    onMenuClick: function(index) {
+    onMenuClick: function (index) {
       this.activeIndex = index;
     },
   },
-  data: function() {
+  data: function () {
     return {
       activeIndex: 0,
       goods: mock.goods,

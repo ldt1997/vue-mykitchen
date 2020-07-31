@@ -2,7 +2,9 @@
   <div id="app">
     <Header :title="title" />
     <!-- 路由匹配到的组件将渲染在这里 -->
-    <div class="router-container"><router-view></router-view></div>
+    <div class="router-container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -10,7 +12,7 @@
 import Header from "@/components/header/Header";
 export default {
   name: "App",
-  data: function() {
+  data: function () {
     return {
       title: "My kitchen :)",
     };
@@ -33,17 +35,5 @@ export default {
 }
 .router-container {
   flex: 1;
-}
-a {
-  text-decoration: none;
-  color: unset;
-}
-body,
-ul,
-li,
-h1 {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
 }
 </style>
