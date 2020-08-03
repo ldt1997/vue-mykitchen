@@ -8,7 +8,11 @@
       <p>{{ food.description }}</p>
       <p class="price">¥{{ food.price }}</p>
     </div>
-    <div class="right">
+    <div v-if="readonly">
+      <span>x {{ cartMap[food.name] && cartMap[food.name].count }} </span>
+      <span>¥ {{ cartMap[food.name].price }}</span>
+    </div>
+    <div class="right" v-if="!readonly">
       <i
         class="el-icon-remove-outline"
         v-show="cartMap[food.name] && cartMap[food.name].count > 0"
@@ -29,6 +33,7 @@
 export default {
   name: "foodItem",
   props: {
+    readonly: Boolean,
     food: Object,
     cartMap: Object,
     handleAddCart: Function,

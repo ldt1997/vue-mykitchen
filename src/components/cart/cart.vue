@@ -10,7 +10,12 @@
       <div class="middle">
         <h3>¥ {{ totalPrice }}</h3>
       </div>
-      <div :class="counts > 0 ? 'right' : 'disabled-right'">去结算</div>
+      <div
+        :class="counts > 0 ? 'right' : 'disabled-right'"
+        @click="toConfirmOrder"
+      >
+        去结算
+      </div>
     </div>
     <section class="drawer-wrapper" v-show="visible">
       <div class="header">
@@ -60,6 +65,10 @@ export default {
       this.$store.commit("setCart", {
         cartMap: {},
       });
+    },
+    toConfirmOrder() {
+      if (!this.counts) return;
+      this.$router.push("/confirmorder");
     },
   },
   data() {

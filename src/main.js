@@ -7,6 +7,8 @@ import '../static/css/reset.css';
 import "../mock/index";
 import Home from "@/components/home/Home"
 import Calendar from "@/components/calendar/Calendar"
+import confirmOrder from '@/components/confirmOrder/confirmOrder'
+import orderDetail from '@/components/orderDetail/orderDetail'
 import Goods from "@/components/goods/Goods"
 import App from './App.vue'
 
@@ -16,7 +18,7 @@ Vue.use(ElementUI);
 
 const store = new Vuex.Store({
   state: {
-    cartMap: {}
+    cartMap: {},
   },
   getters: {
     counts: state => {
@@ -50,6 +52,14 @@ const routes = [{
   {
     path: '/goods',
     component: Goods
+  },
+  {
+    path: '/confirmorder',
+    component: confirmOrder
+  },
+  {
+    path: '/order/detail',
+    component: orderDetail
   }
 ]
 
