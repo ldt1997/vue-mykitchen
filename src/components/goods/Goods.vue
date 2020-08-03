@@ -18,48 +18,50 @@
               <h1>{{ good.name }}</h1>
               <ul>
                 <li v-for="(food, index) in good.foods" :key="index">
-                  <div class="foodItem">
-                    <div class="left">
-                      <img :src="food.image" />
-                    </div>
-                    <div class="middle">
-                      <h2>{{ food.name }}</h2>
-                      <p>{{ food.description }}</p>
-                      <p class="price">¥{{ food.price }}</p>
-                    </div>
-                    <div class="right">
-                      <i
-                        class="el-icon-remove-outline"
-                        v-show="
-                          cartMap[food.name] && cartMap[food.name].count > 0
-                        "
-                        @click="handleRemoveCart(food)"
-                      ></i>
-                      <i
-                        class="el-icon-circle-plus"
-                        @click="handleAddCart(food)"
-                      ></i>
-                    </div>
-                  </div>
+                  <foodItem
+                    :food="food"
+                    :cartMap="cartMap"
+                    :handleAddCart="handleAddCart"
+                    :handleRemoveCart="handleRemoveCart"
+                  />
                 </li>
               </ul>
             </li>
           </ul>
         </el-main>
       </el-container>
-      <el-footer>Footer</el-footer>
+      <el-footer
+        ><cart
+          :cartMap="cartMap"
+          :counts="counts"
+          :totalPrice="totalPrice"
+          :handleAddCart="handleAddCart"
+          :handleRemoveCart="handleRemoveCart"
+      /></el-footer>
     </el-container>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import foodItem from "@/components/foodItem/foodItem";
+import cart from "@/components/cart/cart";
 
 export default {
-  name: "Calendar",
+  name: "goods",
+  components: {
+    cart,
+    foodItem,
+  },
   computed: {
     cartMap() {
       return this.$store.state.cartMap;
+    },
+    counts() {
+      return this.$store.getters.counts;
+    },
+    totalPrice() {
+      return this.$store.getters.totalPrice;
     },
   },
   methods: {
@@ -77,7 +79,7 @@ export default {
     handleRemoveCart(item) {
       const _map = { ...this.$store.state.cartMap };
       _map[item.name].count--;
-      if (_map[item.name].count < 0) _map[item.name].count = 0;
+      if (_map[item.name].count <= 0) delete _map[item.name];
       this.$store.commit("setCart", {
         cartMap: _map,
       });
@@ -105,8 +107,7 @@ export default {
   height: 0;
 }
 .el-footer {
-  background-color: #b3c0d1;
-  color: #333;
+  padding: 0;
   text-align: center;
   line-height: 60px;
 }
@@ -148,46 +149,6 @@ export default {
         font-size: 12px;
         color: #93999f;
         border-left: 2px solid #d9dde1;
-      }
-    }
-  }
-  .foodItem {
-    display: flex;
-    justify-content: space-between;
-    background: #fff;
-    padding: 18px;
-    border-bottom: 1px solid rgba(7, 17, 27, 0.1);
-    .left {
-      width: 57px;
-      height: 57px;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-    .middle {
-      flex: 1;
-      padding-left: 10px;
-      h2 {
-        font-size: 14px;
-        margin: 2px 0 8px 0;
-        line-height: 14px;
-        color: #07111b;
-      }
-      p {
-        font-size: 10px;
-        margin: 0 0 8px 0;
-        color: #93999f;
-      }
-      .price {
-        color: red;
-      }
-    }
-    .right {
-      color: #409eff;
-      i {
-        font-size: 24px;
       }
     }
   }

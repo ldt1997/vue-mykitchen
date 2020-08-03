@@ -8,7 +8,9 @@
           <p>坚守0添加的良心品质深得消费者青睐</p>
         </div>
         <div class="right">
-          <img src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg" />
+          <img
+            src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg"
+          />
         </div>
       </div>
     </section>
@@ -31,7 +33,7 @@
 <script>
 export default {
   name: "Home",
-  data: function () {
+  data: function() {
     return {
       menu: [
         { icon: "el-icon-food", title: "我要吃饭", path: "/goods" },
@@ -63,7 +65,7 @@ export default {
   position: relative;
   height: 35vh;
   background-image: url("../../images/background.jpeg");
-  background-size: contain;
+  background-size: 100%;
   background-repeat: no-repeat;
   .card {
     position: absolute;
