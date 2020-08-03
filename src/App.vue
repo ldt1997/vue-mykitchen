@@ -2,18 +2,27 @@
   <div id="app">
     <Header :title="title" />
     <!-- 路由匹配到的组件将渲染在这里 -->
-    <div class="router-container"><router-view></router-view></div>
+    <div class="router-container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
 import Header from "@/components/header/Header";
+import axios from "axios";
 export default {
   name: "App",
-  data: function() {
+  data() {
     return {
       title: "My kitchen :)",
+      seller: {},
     };
+  },
+  created() {
+    axios.get("/api/getSeller").then((res) => {
+      this.seller = res.data;
+    });
   },
   components: {
     Header,
@@ -33,17 +42,5 @@ export default {
 }
 .router-container {
   flex: 1;
-}
-a {
-  text-decoration: none;
-  color: unset;
-}
-body,
-ul,
-li,
-h1 {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
 }
 </style>

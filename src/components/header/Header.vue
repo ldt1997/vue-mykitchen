@@ -19,5 +19,6 @@ export default {
 <style scoped>
 .header {
   text-align: center;
+  padding: 1em;
 }
 </style>
