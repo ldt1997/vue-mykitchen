@@ -1,5 +1,7 @@
 # vue-mykitchen
 
+demo 地址：[https://ldt1997.github.io/vue-mykitchen/]
+
 ## Project setup
 
 ```
